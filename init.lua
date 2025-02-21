@@ -615,6 +615,7 @@ require('lazy').setup({
       --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+      local go_nvim_gopls_cfg = require('go.lsp').config()
       local servers = {
         -- clangd = {},
         -- gopls = {},
@@ -644,6 +645,8 @@ require('lazy').setup({
           },
         },
         ts_ls = {},
+        gopls = go_nvim_gopls_cfg,
+        pyright = {},
       }
 
       -- Ensure the servers and tools above are installed
@@ -903,7 +906,23 @@ require('lazy').setup({
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      ensure_installed = {
+        'bash',
+        'c',
+        'diff',
+        'html',
+        'lua',
+        'luadoc',
+        'markdown',
+        'markdown_inline',
+        'query',
+        'vim',
+        'vimdoc',
+        'gomod',
+        'gosum',
+        'gotmpl',
+        'yaml',
+      },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
